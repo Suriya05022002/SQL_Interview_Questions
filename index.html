@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Interview Questions</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>SQL Questions</h2>
+                <div class="theme-toggle">
+                    <i class="fas fa-sun"></i>
+                    <label class="switch">
+                        <input type="checkbox" id="theme-switch">
+                        <span class="slider"></span>
+                    </label>
+                    <i class="fas fa-moon"></i>
+                </div>
+            </div>
+            
+            <div class="filter-section">
+                <h3>Filter by Category</h3>
+                <div class="filter-options">
+                    <label class="filter-option">
+                        <input type="checkbox" value="basic" checked>
+                        <span class="checkmark"></span>
+                        <span>Basic SQL</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" value="joins" checked>
+                        <span class="checkmark"></span>
+                        <span>Joins</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" value="aggregation" checked>
+                        <span class="checkmark"></span>
+                        <span>Aggregation</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" value="advanced" checked>
+                        <span class="checkmark"></span>
+                        <span>Advanced</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="question-list-container">
+                <h3>Questions</h3>
+                <div class="question-list" id="question-list">
+                    <!-- Questions will be populated here -->
+                </div>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <header class="main-header">
+                <h1>SQL Interview Questions</h1>
+                <p class="subtitle">Master your SQL interview preparation</p>
+                
+               <!-- Update the progress bar HTML -->
+<div class="progress-container">
+    <div class="progress-bar" id="progress-bar"></div>
+    <div class="progress-text">
+        Question <span id="current-question">1</span> of <span id="total-questions">80</span>
+    </div>
+</div>
+            </header>
+
+
+            
+            <div class="question-container">
+                <div class="question-card" id="question-card">
+                    <!-- Question content will be loaded here -->
+                </div>
+                
+                <div class="controls">
+                    <button id="prev-btn" class="btn">
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </button>
+                    <button id="show-answer-btn" class="btn primary">
+                        <i class="fas fa-eye"></i> Show Answer
+                    </button>
+                    <button id="next-btn" class="btn">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+            
+          <footer>
+            <p>© 2025 SQL Interview Questions | Designed by <span class="gowthamraj">Gowthamraj Network</span></p>
+          </footer>
+
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
