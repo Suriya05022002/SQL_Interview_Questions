@@ -1,251 +1,239 @@
 document.addEventListener('DOMContentLoaded', function() {
     // SQL Interview Questions Data
-    const questions = [
-         {
+   // SQL Interview Questions Data
+const questions = [
+
+  {
     id: 1,
     category: "basic",
     question: "What is SQL?",
     code: null,
     answer:
-      "SQL stands for Structured Query Language. It is a standard programming language for accessing and manipulating databases.",
+      "SQL (Structured Query Language) is a standard programming language used for managing and manipulating relational databases.",
   },
   {
     id: 2,
     category: "basic",
-    question: "What is a database?",
+    question: "What is a primary key?",
     code: null,
     answer:
-      "A database is an organized collection of structured information, or data, typically stored electronically in a computer system. Databases are usually controlled by a database management system (DBMS).",
+      "A primary key is a field (or combination of fields) that uniquely identifies each record in a table. It cannot contain NULL values and must have unique entries.",
   },
   {
     id: 3,
     category: "basic",
-    question: "What is a DBMS?",
+    question: "What is a foreign key?",
     code: null,
     answer:
-      "DBMS stands for Database Management System. It is a software application that interacts with users, other applications, and the database itself to capture and analyze data. A DBMS provides a way to create, retrieve, update, and manage databases.",
+      "A foreign key is a field (or combination of fields) in one table that refers to the primary key in another table, establishing a relationship between the two tables.",
   },
   {
     id: 4,
     category: "basic",
-    question: "What are the different types of SQL commands?",
+    question: "What are constraints in SQL?",
     code: null,
     answer:
-      "SQL commands are divided into several categories:<ul><li><span class='sql-keyword'>DDL</span> - Data Definition Language</li><li><span class='sql-keyword'>DML</span> - Data Manipulation Language</li><li><span class='sql-keyword'>DCL</span> - Data Control Language</li><li><span class='sql-keyword'>TCL</span> - Transaction Control Language</li></ul>",
+      "<ul>" +
+      "<li><strong>PRIMARY KEY</strong>: Uniquely identifies each record.</li>" +
+      "<li><strong>FOREIGN KEY</strong>: Enforces referential integrity.</li>" +
+      "<li><strong>UNIQUE</strong>: Ensures all values in a column are distinct.</li>" +
+      "<li><strong>CHECK</strong>: Ensures that values in a column satisfy a specific condition.</li>" +
+      "<li><strong>NOT NULL</strong>: Ensures a column cannot have NULL values.</li>" +
+      "<li><strong>DEFAULT</strong>: Specifies a default value for a column.</li>" +
+      "</ul>",
   },
   {
     id: 5,
     category: "basic",
-    question: "Explain DDL commands.",
-    code: null,
+    question: "Write a query to retrieve all records from a table named employees.",
+    code: "SELECT * FROM employees;",
     answer:
-      "DDL stands for Data Definition Language. It includes SQL commands that define the database schema. Examples:<ul><li><span class='sql-keyword'>CREATE</span> - to create database objects</li><li><span class='sql-keyword'>ALTER</span> - to alter the structure of the database</li><li><span class='sql-keyword'>DROP</span> - to delete database objects</li><li><span class='sql-keyword'>TRUNCATE</span> - to remove all records from a table</li><li><span class='sql-keyword'>RENAME</span> - to rename a database object</li></ul>",
+      "This query selects and displays all columns and rows from the employees table.",
   },
+
   {
     id: 6,
     category: "basic",
-    question: "Explain DML commands.",
+    question: "What is the difference between DELETE and TRUNCATE?",
     code: null,
     answer:
-      "DML stands for Data Manipulation Language. It includes SQL commands that manipulate data within the database. Examples:<ul><li><span class='sql-keyword'>SELECT</span> - to retrieve data from the database</li><li><span class='sql-keyword'>INSERT</span> - to insert data into a table</li><li><span class='sql-keyword'>UPDATE</span> - to update existing data within a table</li><li><span class='sql-keyword'>DELETE</span> - to delete records from a table</li></ul>",
+      "<ul><li><span class='sql-keyword'>DELETE</span>: Removes rows from a table based on a condition. It can be rolled back (transaction-safe) and triggers can be invoked.</li><li><span class='sql-keyword'>TRUNCATE</span>: Removes all rows from a table, resetting the identity column. It is faster but cannot be rolled back and does not invoke triggers.</li></ul>",
   },
   {
     id: 7,
     category: "basic",
-    question: "Explain DCL commands.",
-    code: null,
-    answer:
-      "DCL stands for Data Control Language. It includes SQL commands that control access to data within the database. Examples:<ul><li><span class='sql-keyword'>GRANT</span> - to grant user access privileges</li><li><span class='sql-keyword'>REVOKE</span> - to revoke user access privileges</li></ul>",
+    question: "How do you find the maximum salary from an employees table?",
+    code: "SELECT MAX(salary) FROM employees;",
+    answer: "This query returns the highest salary from the employees table.",
   },
   {
     id: 8,
     category: "basic",
-    question: "Explain TCL commands.",
-    code: null,
-    answer:
-      "TCL stands for Transaction Control Language. It includes SQL commands that manage transactions within the database. Examples:<ul><li><span class='sql-keyword'>COMMIT</span> - to save changes</li><li><span class='sql-keyword'>ROLLBACK</span> - to undo changes</li><li><span class='sql-keyword'>SAVEPOINT</span> - sets a point within a transaction to which you can later roll back</li></ul>",
+    question: "Write a query to fetch the second-highest salary from the employees table.",
+    code: "SELECT MAX(salary) FROM employees\nWHERE salary < (SELECT MAX(salary) FROM employees);",
+    answer: "The subquery finds the maximum salary, and the outer query finds the highest salary that is less than that value (i.e., the second-highest salary).",
   },
   {
     id: 9,
     category: "basic",
-    question: "What is a primary key?",
+    question: "What is a JOIN? Explain its types.",
     code: null,
     answer:
-      "A primary key is a column or a set of columns that uniquely identifies each row in a table. It must contain unique values and cannot contain NULL values.",
+      "A JOIN clause is used to combine rows from two or more tables based on a related column. Types of joins:<ul><li><span class='sql-keyword'>INNER JOIN</span>: Returns rows with matching values in both tables.</li><li><span class='sql-keyword'>LEFT JOIN</span>: Returns all rows from the left table and the matched rows from the right table. If there is no match, NULL values are returned for the right table's columns.</li><li><span class='sql-keyword'>RIGHT JOIN</span>: Returns all rows from the right table and the matched rows from the left.</li><li><span class='sql-keyword'>FULL JOIN</span>: Returns rows when there is a match in either table.</li><li><span class='sql-keyword'>CROSS JOIN</span>: Returns the Cartesian product of both tables.</li></ul>",
   },
   {
     id: 10,
-    category: "basic",
-    question: "What is a foreign key?",
-    code: null,
-    answer:
-      "A foreign key is a column or a set of columns in one table that refers to the primary key of another table. It establishes a link between the two tables.",
+    category: "joins",
+    question: "Write a query to fetch employee names and department names using JOIN.",
+    code: "SELECT e.name, d.department_name\nFROM employees e\nJOIN departments d\nON e.department_id = d.id;",
+    answer: "This query joins the employees table with the departments table based on the department_id, displaying employee names and their corresponding department names.",
   },
   {
     id: 11,
     category: "basic",
-    question: "What is a unique key?",
+    question: "What is a GROUP BY clause in SQL?",
     code: null,
-    answer:
-      "A unique key is a column or a set of columns that uniquely identifies each row in a table. Unlike a primary key, a table can have multiple unique keys, and unique key columns can contain NULL values.",
+    answer: "The GROUP BY clause groups rows with the same values into summary rows. It is commonly used with aggregate functions like COUNT(), SUM(), AVG(), etc.",
   },
   {
     id: 12,
     category: "basic",
-    question: "What is an index?",
-    code: null,
-    answer:
-      "An index is a data structure that improves the speed of data retrieval operations on a database table. It is created on one or more columns of a table.",
+    question: "Write a query to count employees in each department.",
+    code: "SELECT department_id, COUNT(*)\nFROM employees\nGROUP BY department_id;",
+    answer: "This query groups employees by department_id and counts the number of employees in each department.",
   },
   {
     id: 13,
     category: "basic",
-    question: "What is a view?",
+    question: "What is the difference between WHERE and HAVING clauses?",
     code: null,
-    answer:
-      "A view is a virtual table based on the result-set of a SQL statement. A view contains rows and columns, just like a real table. The fields in a view are fields from one or more real tables in the database.",
+    answer: "<ul><li><span class='sql-keyword'>WHERE</span>: Filters rows before grouping (applies to individual rows).</li><li><span class='sql-keyword'>HAVING</span>: Filters groups after the GROUP BY clause (applies to aggregate functions).</li></ul>",
   },
   {
     id: 14,
     category: "basic",
-    question: "What is a stored procedure?",
-    code: null,
-    answer:
-      "A stored procedure is a set of SQL statements with an assigned name, which is stored in the database in compiled form so that it can be shared by a number of programs.",
+    question: "Write a query to fetch departments with more than 5 employees.",
+    code: "SELECT department_id, COUNT(*)\nFROM employees\nGROUP BY department_id\nHAVING COUNT(*) > 5;",
+    answer: "The query counts employees in each department and returns departments with more than 5 employees.",
   },
   {
     id: 15,
     category: "basic",
-    question: "What is a trigger?",
+    question: "Explain UNION and UNION ALL.",
     code: null,
-    answer:
-      "A trigger is a stored procedure that automatically executes in response to certain events on a particular table or view in a database.",
+    answer: "<ul><li><span class='sql-keyword'>UNION</span>: Combines results of two or more SELECT statements and removes duplicates.</li><li><span class='sql-keyword'>UNION ALL</span>: Combines results and keeps all duplicates.</li></ul>",
   },
   {
     id: 16,
     category: "basic",
-    question: "What is normalization?",
+    question: "What is a subquery in SQL?",
     code: null,
-    answer:
-      "Normalization is the process of organizing data in a database to reduce redundancy and improve data integrity. It usually involves dividing a database into two or more tables and defining relationships between the tables.",
+    answer: "A subquery is a query nested within another query. It is used to retrieve data that will be passed into the outer query.",
   },
   {
     id: 17,
     category: "basic",
-    question: "What are the normal forms?",
-    code: null,
-    answer:
-      "The normal forms are a series of guidelines that help to ensure that a database is well-structured. The most common normal forms are:<ul><li><span class='sql-keyword'>1NF</span> - First Normal Form</li><li><span class='sql-keyword'>2NF</span> - Second Normal Form</li><li><span class='sql-keyword'>3NF</span> - Third Normal Form</li><li><span class='sql-keyword'>BCNF</span> - Boyce-Codd Normal Form</li></ul>",
+    question: "Write a query to find all employees whose salary is greater than the average salary.",
+    code: "SELECT *\nFROM employees\nWHERE salary > (SELECT AVG(salary) FROM employees);",
+    answer: "This query selects all employees with a salary higher than the average salary of all employees.",
   },
   {
     id: 18,
-    category: "basic",
-    question: "What is denormalization?",
+    category: "joins",
+    question: "What is the difference between INNER JOIN and OUTER JOIN?",
     code: null,
-    answer:
-      "Denormalization is a database optimization technique in which redundant data is added to one or more tables to avoid costly joins. It is often used to improve read performance.",
+    answer: "<ul><li><span class='sql-keyword'>INNER JOIN</span>: Returns rows with matching values in both tables.</li><li><span class='sql-keyword'>OUTER JOIN</span> (Left/Right/Full): Returns matching rows plus non-matching rows from one or both tables.</li></ul>",
   },
   {
     id: 19,
     category: "basic",
-    question: "What is a subquery?",
-    code: null,
-    answer:
-      "A subquery is a query nested inside another SQL query. A subquery is usually added within the WHERE clause of another SQL statement.",
+    question: "Write a query to fetch the current date in SQL.",
+    code: "SELECT CURRENT_DATE;",
+    answer: "This query retrieves the current date from the database.",
   },
   {
     id: 20,
     category: "basic",
-    question: "What are the different types of joins?",
+    question: "What is indexing in SQL?",
     code: null,
-    answer:
-      "There are several types of joins:<ul><li><span class='sql-keyword'>INNER JOIN</span> - Returns rows when there is a match in both tables</li><li><span class='sql-keyword'>LEFT JOIN</span> - Returns all rows from the left table, and the matched rows from the right table</li><li><span class='sql-keyword'>RIGHT JOIN</span> - Returns all rows from the right table, and the matched rows from the left table</li><li><span class='sql-keyword'>FULL OUTER JOIN</span> - Returns all rows when there is a match in one of the tables</li><li><span class='sql-keyword'>CROSS JOIN</span> - Returns the Cartesian product of the sets of records from the two or more joined tables</li></ul>",
+    answer: "Indexing improves the speed of data retrieval by creating a data structure (index) on one or more columns of a table.",
   },
   {
     id: 21,
     category: "basic",
-    question: "What is the difference between WHERE and HAVING clauses?",
+    question: "What is normalization? Explain its types (1NF, 2NF, 3NF, BCNF).",
     code: null,
-    answer:
-      "The WHERE clause is used to filter records from a table based on a specified condition. The HAVING clause is used to filter records from a group based on a specified condition. The WHERE clause is applied before grouping, while the HAVING clause is applied after grouping.",
+    answer: "Normalization is the process of organizing data to reduce redundancy and improve data integrity. Forms:<ul><li><span class='sql-keyword'>1NF</span>: Eliminate duplicate columns and create tables for related data.</li><li><span class='sql-keyword'>2NF</span>: Remove partial dependencies (columns depend on a part of a composite key).</li><li><span class='sql-keyword'>3NF</span>: Remove transitive dependencies (non-key columns depend on other non-key columns).</li><li><span class='sql-keyword'>BCNF</span>: A stricter version of 3NF where every determinant must be a candidate key.</li></ul>",
   },
   {
     id: 22,
     category: "basic",
-    question: "What is the ORDER BY clause?",
+    question: "What is denormalization?",
     code: null,
-    answer: "The ORDER BY clause is used to sort the result-set in ascending or descending order.",
+    answer: "Denormalization is the process of combining normalized tables to improve performance at the cost of introducing redundancy.",
   },
   {
     id: 23,
     category: "basic",
-    question: "What is the GROUP BY clause?",
-    code: null,
-    answer:
-      "The GROUP BY clause is used to group rows that have the same values in specified columns into summary rows, like finding the number of customers in each country.",
+    question: "Write a query to add a new column email to the employees table.",
+    code: "ALTER TABLE employees ADD COLUMN email VARCHAR(255);",
+    answer: "This query adds a new email column to the employees table.",
   },
   {
     id: 24,
     category: "basic",
-    question: "What are aggregate functions?",
+    question: "What is a stored procedure in SQL?",
     code: null,
-    answer:
-      "Aggregate functions are functions that perform a calculation on a set of values and return a single value. Examples:<ul><li><span class='sql-keyword'>COUNT()</span></li><li><span class='sql-keyword'>SUM()</span></li><li><span class='sql-keyword'>AVG()</span></li><li><span class='sql-keyword'>MAX()</span></li><li><span class='sql-keyword'>MIN()</span></li></ul>",
+    answer: "A stored procedure is a set of SQL statements that can be stored in the database and executed as a program to perform a specific task.",
   },
   {
     id: 25,
     category: "basic",
-    question: "What is the UNION operator?",
-    code: null,
-    answer:
-      "The UNION operator is used to combine the result-sets of two or more SELECT statements. It removes duplicate rows.",
+    question: "Write a basic stored procedure to fetch all employees.",
+    code: "CREATE PROCEDURE GetAllEmployees()\nBEGIN\n  SELECT * FROM employees;\nEND;",
+    answer: "This procedure retrieves all records from the employees table when executed.",
   },
   {
     id: 26,
     category: "basic",
-    question: "What is the UNION ALL operator?",
+    question: "What are triggers in SQL?",
     code: null,
-    answer:
-      "The UNION ALL operator is used to combine the result-sets of two or more SELECT statements. It does not remove duplicate rows.",
+    answer: "Triggers are special procedures that are automatically executed (or \"triggered\") in response to certain events (INSERT, UPDATE, DELETE) on a table.",
   },
   {
     id: 27,
-    category: "basic",
-    question: "What is the INTERSECT operator?",
-    code: null,
-    answer: "The INTERSECT operator is used to return the common rows between two or more SELECT statements.",
+    category: "advanced",
+    question: "Write a query to create a trigger that logs any delete action on the employees table.",
+    code: "CREATE TRIGGER log_delete\nAFTER DELETE ON employees\nFOR EACH ROW\nBEGIN\n  INSERT INTO log_table(action, emp_id, log_time)\n  VALUES('DELETE', OLD.id, NOW());\nEND;",
+    answer: "This trigger logs the deletion of any employee by recording the action and employee ID in the log_table.",
   },
   {
     id: 28,
     category: "basic",
-    question: "What is the EXCEPT operator?",
+    question: "What is a VIEW in SQL?",
     code: null,
-    answer:
-      "The EXCEPT operator is used to return the rows from the first SELECT statement that are not present in the second SELECT statement.",
+    answer: "A VIEW is a virtual table based on the result set of an SQL query. It does not store the data itself but provides a way to simplify complex queries.",
   },
   {
     id: 29,
     category: "basic",
-    question: "What is a cursor?",
-    code: null,
-    answer: "A cursor is a database object used to retrieve data from a result set one row at a time.",
+    question: "Write a query to create a view for employees with salary greater than 50,000.",
+    code: "CREATE VIEW HighSalaryEmployees AS\nSELECT * FROM employees WHERE salary > 50000;",
+    answer: "This query creates a view that shows only employees with salaries above $50,000.",
   },
   {
     id: 30,
     category: "basic",
-    question: "What is dynamic SQL?",
+    question: "What is the difference between VIEW and TABLE?",
     code: null,
-    answer:
-      "Dynamic SQL is a programming technique that enables you to construct SQL statements programmatically at runtime.",
+    answer: "A TABLE stores data physically, while a VIEW is a virtual representation that dynamically pulls data from one or more tables without storing it.",
   },
-
   {
     id: 31,
     category: "aggregation",
     question: "What is an aggregate function? Provide examples.",
     code: null,
-    answer:
-      "Aggregate functions perform calculations on a set of values and return a single value. Examples include:<ul><li><span class='sql-keyword'>COUNT()</span>: Counts the number of rows.</li><li><span class='sql-keyword'>SUM()</span>: Sums up a numeric column.</li><li><span class='sql-keyword'>AVG()</span>: Calculates the average of a numeric column.</li><li><span class='sql-keyword'>MAX()</span>: Returns the maximum value.</li><li><span class='sql-keyword'>MIN()</span>: Returns the minimum value.</li></ul>",
+    answer: "Aggregate functions perform calculations on a set of values and return a single value. Examples include:<ul><li><span class='sql-keyword'>COUNT()</span>: Counts the number of rows.</li><li><span class='sql-keyword'>SUM()</span>: Sums up a numeric column.</li><li><span class='sql-keyword'>AVG()</span>: Calculates the average of a numeric column.</li><li><span class='sql-keyword'>MAX()</span>: Returns the maximum value.</li><li><span class='sql-keyword'>MIN()</span>: Returns the minimum value.</li></ul>",
   },
   {
     id: 32,
@@ -259,8 +247,7 @@ document.addEventListener('DOMContentLoaded', function() {
     category: "basic",
     question: "Explain the DISTINCT keyword in SQL.",
     code: null,
-    answer:
-      "The DISTINCT keyword is used to return unique values from a column, eliminating duplicate entries from the result set.",
+    answer: "The DISTINCT keyword is used to return unique values from a column, eliminating duplicate entries from the result set.",
   },
   {
     id: 34,
@@ -274,24 +261,21 @@ document.addEventListener('DOMContentLoaded', function() {
     category: "advanced",
     question: "What are the ACID properties in SQL?",
     code: null,
-    answer:
-      "ACID properties ensure reliable processing of database transactions:<ul><li><span class='sql-keyword'>Atomicity</span>: Ensures that all parts of a transaction are completed successfully or none at all.</li><li><span class='sql-keyword'>Consistency</span>: Ensures the database remains in a valid state before and after the transaction.</li><li><span class='sql-keyword'>Isolation</span>: Ensures transactions do not affect each other's execution.</li><li><span class='sql-keyword'>Durability</span>: Ensures that once a transaction is committed, it remains permanent, even in the event of a failure.</li></ul>",
+    answer: "ACID properties ensure reliable processing of database transactions:<ul><li><span class='sql-keyword'>Atomicity</span>: Ensures that all parts of a transaction are completed successfully or none at all.</li><li><span class='sql-keyword'>Consistency</span>: Ensures the database remains in a valid state before and after the transaction.</li><li><span class='sql-keyword'>Isolation</span>: Ensures transactions do not affect each other's execution.</li><li><span class='sql-keyword'>Durability</span>: Ensures that once a transaction is committed, it remains permanent, even in the event of a failure.</li></ul>",
   },
   {
     id: 36,
     category: "advanced",
     question: "What is a transaction in SQL?",
     code: null,
-    answer:
-      "A transaction is a sequence of one or more SQL operations treated as a single unit of work, ensuring data integrity.",
+    answer: "A transaction is a sequence of one or more SQL operations treated as a single unit of work, ensuring data integrity.",
   },
   {
     id: 37,
     category: "advanced",
     question: "Explain COMMIT, ROLLBACK, and SAVEPOINT.",
     code: null,
-    answer:
-      "<ul><li><span class='sql-keyword'>COMMIT</span>: Saves all changes made during the current transaction.</li><li><span class='sql-keyword'>ROLLBACK</span>: Undoes changes made during the current transaction, restoring the database to its previous state.</li><li><span class='sql-keyword'>SAVEPOINT</span>: Sets a point within a transaction to which you can later roll back.</li></ul>",
+    answer: "<ul><li><span class='sql-keyword'>COMMIT</span>: Saves all changes made during the current transaction.</li><li><span class='sql-keyword'>ROLLBACK</span>: Undoes changes made during the current transaction, restoring the database to its previous state.</li><li><span class='sql-keyword'>SAVEPOINT</span>: Sets a point within a transaction to which you can later roll back.</li></ul>",
   },
   {
     id: 38,
@@ -305,8 +289,7 @@ document.addEventListener('DOMContentLoaded', function() {
     category: "advanced",
     question: "What is a CASE statement in SQL?",
     code: null,
-    answer:
-      "A CASE statement is used to perform conditional logic in SQL queries, allowing different outputs based on specified conditions.",
+    answer: "A CASE statement is used to perform conditional logic in SQL queries, allowing different outputs based on specified conditions.",
   },
   {
     id: 40,
@@ -320,8 +303,7 @@ document.addEventListener('DOMContentLoaded', function() {
     category: "basic",
     question: "Explain NULL values in SQL.",
     code: null,
-    answer:
-      "NULL represents the absence of a value in a database. It is not equivalent to zero or an empty string and is treated differently in comparisons.",
+    answer: "NULL represents the absence of a value in a database. It is not equivalent to zero or an empty string and is treated differently in comparisons.",
   },
   {
     id: 42,
@@ -349,16 +331,14 @@ document.addEventListener('DOMContentLoaded', function() {
     category: "aggregation",
     question: "What is the difference between COUNT(*) and COUNT(column_name)?",
     code: null,
-    answer:
-      "COUNT(*) counts all rows in a table, including NULL values, while COUNT(column_name) counts only non-NULL values in the specified column.",
+    answer: "COUNT(*) counts all rows in a table, including NULL values, while COUNT(column_name) counts only non-NULL values in the specified column.",
   },
   {
     id: 46,
     category: "basic",
     question: "What is the difference between CHAR and VARCHAR in SQL?",
     code: null,
-    answer:
-      "<ul><li><span class='sql-keyword'>CHAR</span>: Fixed-length string data type. If the string is shorter than the specified length, it is padded with spaces.</li><li><span class='sql-keyword'>VARCHAR</span>: Variable-length string data type. It uses only the necessary space for the string's length, plus one or two bytes for length information.</li></ul>",
+    answer: "<ul><li><span class='sql-keyword'>CHAR</span>: Fixed-length string data type. If the string is shorter than the specified length, it is padded with spaces.</li><li><span class='sql-keyword'>VARCHAR</span>: Variable-length string data type. It uses only the necessary space for the string's length, plus one or two bytes for length information.</li></ul>",
   },
   {
     id: 47,
@@ -372,8 +352,7 @@ document.addEventListener('DOMContentLoaded', function() {
     category: "advanced",
     question: "What is a recursive query?",
     code: null,
-    answer:
-      "A recursive query is a query that references itself. It is often used to handle hierarchical data, such as organizational structures.",
+    answer: "A recursive query is a query that references itself. It is often used to handle hierarchical data, such as organizational structures.",
   },
   {
     id: 49,
@@ -387,16 +366,14 @@ document.addEventListener('DOMContentLoaded', function() {
     category: "advanced",
     question: "Explain the EXISTS clause in SQL.",
     code: null,
-    answer:
-      "The EXISTS clause is used to check for the existence of rows returned by a subquery. It returns TRUE if the subquery returns one or more rows.",
+    answer: "The EXISTS clause is used to check for the existence of rows returned by a subquery. It returns TRUE if the subquery returns one or more rows.",
   },
   {
     id: 51,
     category: "basic",
     question: "What is the purpose of the LIMIT clause in SQL?",
     code: null,
-    answer:
-      "The LIMIT clause is used to specify the maximum number of records to return in the result set. It helps in pagination and controlling output size.",
+    answer: "The LIMIT clause is used to specify the maximum number of records to return in the result set. It helps in pagination and controlling output size.",
   },
   {
     id: 52,
@@ -410,16 +387,14 @@ document.addEventListener('DOMContentLoaded', function() {
     category: "basic",
     question: "What is a composite key?",
     code: null,
-    answer:
-      "A composite key is a combination of two or more columns in a table that together uniquely identify a record. It is used when a single column is not sufficient to uniquely identify rows.",
+    answer: "A composite key is a combination of two or more columns in a table that together uniquely identify a record. It is used when a single column is not sufficient to uniquely identify rows.",
   },
   {
     id: 54,
     category: "basic",
     question: "Explain the ALTER TABLE command.",
     code: null,
-    answer:
-      "The ALTER TABLE command is used to modify an existing table structure, allowing changes such as adding, dropping, or modifying columns and constraints.",
+    answer: "The ALTER TABLE command is used to modify an existing table structure, allowing changes such as adding, dropping, or modifying columns and constraints.",
   },
   {
     id: 55,
@@ -433,24 +408,21 @@ document.addEventListener('DOMContentLoaded', function() {
     category: "basic",
     question: "What is data integrity?",
     code: null,
-    answer:
-      "Data integrity refers to the accuracy, consistency, and reliability of data over its lifecycle. It is maintained through various means, including constraints, data validation, and database rules.",
+    answer: "Data integrity refers to the accuracy, consistency, and reliability of data over its lifecycle. It is maintained through various means, including constraints, data validation, and database rules.",
   },
   {
     id: 57,
     category: "joins",
     question: "Explain the difference between INNER JOIN and LEFT JOIN.",
     code: null,
-    answer:
-      "<ul><li><span class='sql-keyword'>INNER JOIN</span>: Returns only the rows with matching values in both tables.</li><li><span class='sql-keyword'>LEFT JOIN</span>: Returns all rows from the left table and the matched rows from the right table. If there is no match, NULL values are returned for the right table's columns.</li></ul>",
+    answer: "<ul><li><span class='sql-keyword'>INNER JOIN</span>: Returns only the rows with matching values in both tables.</li><li><span class='sql-keyword'>LEFT JOIN</span>: Returns all rows from the left table and the matched rows from the right table. If there is no match, NULL values are returned for the right table's columns.</li></ul>",
   },
   {
     id: 58,
     category: "advanced",
     question: "What are the advantages of using indexes?",
     code: null,
-    answer:
-      "Indexes improve query performance by reducing the amount of data the database must scan. They can speed up searches, sorts, and joins, but may slow down insertions, updates, and deletions due to the overhead of maintaining the index.",
+    answer: "Indexes improve query performance by reducing the amount of data the database must scan. They can speed up searches, sorts, and joins, but may slow down insertions, updates, and deletions due to the overhead of maintaining the index.",
   },
   {
     id: 59,
@@ -464,8 +436,7 @@ document.addEventListener('DOMContentLoaded', function() {
     category: "joins",
     question: "What is a CROSS JOIN?",
     code: null,
-    answer:
-      "A CROSS JOIN produces the Cartesian product of two tables, meaning every row from the first table is combined with every row from the second table.",
+    answer: "A CROSS JOIN produces the Cartesian product of two tables, meaning every row from the first table is combined with every row from the second table.",
   },
   {
     id: 61,
@@ -479,32 +450,28 @@ document.addEventListener('DOMContentLoaded', function() {
     category: "advanced",
     question: "What is a SQL injection?",
     code: null,
-    answer:
-      "SQL injection is a security vulnerability that occurs when an attacker can manipulate a SQL query by injecting malicious input through user input fields, potentially allowing unauthorized access to the database.",
+    answer: "SQL injection is a security vulnerability that occurs when an attacker can manipulate a SQL query by injecting malicious input through user input fields, potentially allowing unauthorized access to the database.",
   },
   {
     id: 63,
     category: "advanced",
     question: "How can you prevent SQL injection?",
     code: null,
-    answer:
-      "To prevent SQL injection:<ul><li>Use prepared statements or parameterized queries.</li><li>Validate and sanitize user inputs.</li><li>Limit database user permissions.</li><li>Use ORM frameworks that handle data safely.</li></ul>",
+    answer: "To prevent SQL injection:<ul><li>Use prepared statements or parameterized queries.</li><li>Validate and sanitize user inputs.</li><li>Limit database user permissions.</li><li>Use ORM frameworks that handle data safely.</li></ul>",
   },
   {
     id: 64,
     category: "advanced",
     question: "What is a database view? Can it be updated?",
     code: null,
-    answer:
-      "A database view is a virtual table based on a SQL query that can simplify complex queries. While some views are updatable, updates depend on the complexity of the underlying query. Simple views that directly map to a single table can usually be updated.",
+    answer: "A database view is a virtual table based on a SQL query that can simplify complex queries. While some views are updatable, updates depend on the complexity of the underlying query. Simple views that directly map to a single table can usually be updated.",
   },
   {
     id: 65,
     category: "advanced",
     question: "What is the difference between RANK() and DENSE_RANK()?",
     code: null,
-    answer:
-      "<ul><li><span class='sql-keyword'>RANK()</span>: Assigns a rank to each row within a partition, with gaps in the ranking for ties.</li><li><span class='sql-keyword'>DENSE_RANK()</span>: Similar to RANK(), but without gaps in the ranking for ties.</li></ul>",
+    answer: "<ul><li><span class='sql-keyword'>RANK()</span>: Assigns a rank to each row within a partition, with gaps in the ranking for ties.</li><li><span class='sql-keyword'>DENSE_RANK()</span>: Similar to RANK(), but without gaps in the ranking for ties.</li></ul>",
   },
   {
     id: 66,
@@ -513,46 +480,51 @@ document.addEventListener('DOMContentLoaded', function() {
     code: "SELECT name, salary, RANK() OVER (ORDER BY salary DESC) AS salary_rank\nFROM employees;",
     answer: "This query ranks employees based on their salaries in descending order.",
   },
-
   {
     id: 67,
     category: "basic",
     question: "What are the common data types in SQL?",
     code: null,
-    answer:
-      "Common SQL data types include:<ul><li><span class='sql-keyword'>INTEGER</span>: Whole numbers.</li><li><span class='sql-keyword'>VARCHAR</span>: Variable-length character strings.</li><li><span class='sql-keyword'>CHAR</span>: Fixed-length character strings.</li><li><span class='sql-keyword'>DATE</span>: Date values.</li><li><span class='sql-keyword'>FLOAT</span>: Floating-point numbers.</li><li><span class='sql-keyword'>BOOLEAN</span>: True/false values.</li></ul>",
+    answer: "Common SQL data types include:<ul><li><span class='sql-keyword'>INTEGER</span>: Whole numbers.</li><li><span class='sql-keyword'>VARCHAR</span>: Variable-length character strings.</li><li><span class='sql-keyword'>CHAR</span>: Fixed-length character strings.</li><li><span class='sql-keyword'>DATE</span>: Date values.</li><li><span class='sql-keyword'>FLOAT</span>: Floating-point numbers.</li><li><span class='sql-keyword'>BOOLEAN</span>: True/false values.</li></ul>",
   },
+
   {
     id: 68,
-    category: "basic",
-    question: "What is the difference between DELETE and TRUNCATE?",
+    category: "intermediate",
+    question: "Explain the WITH clause (Common Table Expression).",
     code: null,
     answer:
-      "<ul><li><span class='sql-keyword'>DELETE</span>: Removes rows from a table based on a condition. It can be rolled back (transaction-safe) and triggers can be invoked.</li><li><span class='sql-keyword'>TRUNCATE</span>: Removes all rows from a table, resetting the identity column. It is faster but cannot be rolled back and does not invoke triggers.</li></ul>",
+      "The WITH clause defines a temporary result set (a Common Table Expression) that can be referenced within a SELECT, INSERT, UPDATE, or DELETE statement, often simplifying complex queries.",
   },
   {
     id: 69,
-    category: "basic",
-    question: "What is the difference between a clustered and non-clustered index?",
-    code: null,
+    category: "intermediate",
+    question: "Write a query using a CTE to find employees with salaries greater than the average.",
+    code:
+      `WITH AvgSalary AS (
+  SELECT AVG(salary) AS avg_salary
+  FROM employees
+)
+SELECT *
+FROM employees
+WHERE salary > (SELECT avg_salary FROM AvgSalary);`,
     answer:
-      "<ul><li><span class='sql-keyword'>Clustered Index</span>: Determines the physical order of data in a table. A table can have only one clustered index.</li><li><span class='sql-keyword'>Non-clustered Index</span>: Creates a separate structure that references the table. A table can have multiple non-clustered indexes.</li></ul>",
+      "This query uses a CTE to calculate the average salary and then selects employees earning more than that average.",
   },
+
   {
     id: 70,
     category: "basic",
-    question: "What is a temporary table in SQL?",
+    question: "What are SQL data types? Give examples.",
     code: null,
-    answer:
-      "A temporary table is a table that exists temporarily on the database server. It is visible only to the current session and is automatically dropped when the session ends. Temporary tables are useful for storing intermediate results.",
+    answer: "SQL data types specify the kind of data that can be stored in a column. Examples include:<ul><li><span class='sql-keyword'>INT</span>: Integer values.</li><li><span class='sql-keyword'>VARCHAR(n)</span>: Variable-length string.</li><li><span class='sql-keyword'>DATE</span>: Date values.</li><li><span class='sql-keyword'>FLOAT</span>: Floating-point numbers.</li><li><span class='sql-keyword'>BOOLEAN</span>: True/false values.</li></ul>",
   },
   {
     id: 71,
-    category: "aggregation",
+    category: "basic",
     question: "What is the purpose of the GROUP BY clause?",
     code: null,
-    answer:
-      "The GROUP BY clause groups rows that have the same values in specified columns into aggregated data, often used with aggregate functions.",
+    answer: "The GROUP BY clause groups rows that have the same values in specified columns into aggregated data, often used with aggregate functions.",
   },
   {
     id: 72,
@@ -566,8 +538,7 @@ document.addEventListener('DOMContentLoaded', function() {
     category: "joins",
     question: "What is a SELF JOIN?",
     code: null,
-    answer:
-      "A SELF JOIN is a regular join that joins a table with itself. It is used when you need to compare rows within the same table.",
+    answer: "A SELF JOIN is a regular join that joins a table with itself. It is used when you need to compare rows within the same table.",
   },
   {
     id: 74,
@@ -581,8 +552,7 @@ document.addEventListener('DOMContentLoaded', function() {
     category: "basic",
     question: "What is the difference between WHERE and AND?",
     code: null,
-    answer:
-      "WHERE is used to specify conditions for filtering rows in a query, while AND is a logical operator used within the WHERE clause to combine multiple conditions.",
+    answer: "WHERE is used to specify conditions for filtering rows in a query, while AND is a logical operator used within the WHERE clause to combine multiple conditions.",
   },
   {
     id: 76,
@@ -596,8 +566,7 @@ document.addEventListener('DOMContentLoaded', function() {
     category: "advanced",
     question: "What are stored functions in SQL?",
     code: null,
-    answer:
-      "Stored functions are similar to stored procedures but return a single value. They can be used in SQL statements just like built-in functions.",
+    answer: "Stored functions are similar to stored procedures but return a single value. They can be used in SQL statements just like built-in functions.",
   },
   {
     id: 78,
@@ -611,8 +580,7 @@ document.addEventListener('DOMContentLoaded', function() {
     category: "advanced",
     question: "What is the EXPLAIN statement used for?",
     code: null,
-    answer:
-      "The EXPLAIN statement provides information about how a SQL query will be executed, including details on the chosen indexes, join types, and estimated rows. It helps optimize queries for better performance.",
+    answer: "The EXPLAIN statement provides information about how a SQL query will be executed, including details on the chosen indexes, join types, and estimated rows. It helps optimize queries for better performance.",
   },
   {
     id: 80,
@@ -620,9 +588,8 @@ document.addEventListener('DOMContentLoaded', function() {
     question: "Write a query to use EXPLAIN to analyze a SELECT statement.",
     code: "EXPLAIN SELECT * FROM employees WHERE department_id = 1;",
     answer: "This query analyzes the execution plan for selecting employees from department 1.",
-  },
-
-    ];
+  }
+];
 
     // DOM Elements
     const questionCard = document.getElementById('question-card');
